@@ -30,6 +30,11 @@ class RecipeListView : AppCompatActivity(), RecipeListener {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = RecipeViewAdapter(presenter.getRecipes(), this)
         this.onRefresh()
+
+        // Handle FAB clicks
+        binding.fab.setOnClickListener {
+            presenter.doAddRecipe()
+        }
     }
     override fun onRecipeClick(recipe: RecipeModel, position: Int) {
         i("Clicked on recipe ${recipe.id} at position $position")

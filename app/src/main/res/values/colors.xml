@@ -6,7 +6,8 @@
     <color name="red_700">#D32F2F</color>
     <color name="purple_a100">#B388FF</color>
     <color name="purple_a400">#651FFF</color>
-    <color name="blue_a100">#82B1FF</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="blue_a100">#84FFFF</color>
+    <color name="grey">#404040</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>
