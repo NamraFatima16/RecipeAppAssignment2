@@ -70,7 +70,7 @@ class RecipeView : AppCompatActivity() {
         binding.editTextRecipeTitle.setText(recipe.title)
         binding.editTextRecipeDescription.setText(recipe.description)
         binding.editTextServes.setText(recipe.servings.toString())
-        binding.editTextRecipeDescription.setText(recipe.instructions)
+        binding.editTextInstructions.setText(recipe.instructions)
         binding.textTime.text = recipe.timeRequired
 
         if(recipe.image != Uri.EMPTY) {
@@ -78,6 +78,8 @@ class RecipeView : AppCompatActivity() {
             Picasso.get()
                 .load(recipe.image)
                 .placeholder(R.drawable.baseline_broken_image_24)
+                .fit()
+                .centerCrop()
                 .into(binding.imageView)
         }
         else {
