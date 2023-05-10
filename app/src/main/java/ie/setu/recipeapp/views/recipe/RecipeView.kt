@@ -74,13 +74,13 @@ class RecipeView : AppCompatActivity() {
         binding.textTime.text = recipe.timeRequired
 
         if(recipe.image != Uri.EMPTY) {
-            binding.btnSelectImg.setText("Change image")
             Picasso.get()
                 .load(recipe.image)
                 .placeholder(R.drawable.baseline_broken_image_24)
                 .fit()
                 .centerCrop()
                 .into(binding.imageView)
+            binding.btnSelectImg.setText("Change image")
         }
         else {
             Picasso.get()
