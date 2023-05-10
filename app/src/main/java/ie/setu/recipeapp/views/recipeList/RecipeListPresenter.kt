@@ -5,7 +5,9 @@ import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import ie.setu.recipeapp.main.MainApp
+import ie.setu.recipeapp.models.RecipeModel
 import ie.setu.recipeapp.views.recipe.RecipeView
+import timber.log.Timber.i
 
 
 class RecipeListPresenter(private val view: RecipeListView) {
@@ -23,12 +25,15 @@ class RecipeListPresenter(private val view: RecipeListView) {
     fun getRecipes() = app.recipes.read()
 
     fun doAddRecipe() {
-        val launcherIntent = Intent(view, RecipeView::class.java)
-        refreshRecipeListIntentLauncher.launch(launcherIntent)
+        val addRecipeTargetIntent = Intent(view, RecipeView::class.java)
+        refreshRecipeListIntentLauncher.launch(addRecipeTargetIntent)
     }
 
-    fun doEditRecipe() {
-        //Todo
+    fun doViewRecipe(recipe: RecipeModel, position: Int) {
+        val viewRecipeTargetIntent = Intent(view, RecipeView::class.java)
+        viewRecipeTargetIntent.putExtra("recipe_edit", recipe)
+        this.position = position
+        refreshRecipeListIntentLauncher.launch(viewRecipeTargetIntent)
     }
 
     // Call back for refreshing the recyclerview when we add, delete or edit the recipes
@@ -38,6 +43,8 @@ class RecipeListPresenter(private val view: RecipeListView) {
         ) {
             when(it.resultCode) {
                 Activity.RESULT_OK -> view.onRefresh()
+                Activity.RESULT_CANCELED -> i("Operation canceled")
+                99 -> view.onDelete(position)
             }
         }
     }

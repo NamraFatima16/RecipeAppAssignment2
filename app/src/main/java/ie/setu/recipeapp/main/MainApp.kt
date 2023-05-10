@@ -17,7 +17,7 @@ class MainApp : Application() {
         //Start the logger
         Timber.plant(Timber.DebugTree())
         i("RecipeApp started...")
-        //recipes = RecipeJSONStore(applicationContext)
-        recipes = RecipeMemStore()
+        recipes = RecipeJSONStore(applicationContext)
+        //recipes = RecipeMemStore()
     }
 }

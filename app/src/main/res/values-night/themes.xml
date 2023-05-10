@@ -13,5 +13,7 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="colorAccent">@color/purple_a100</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
+        <item name="android:timePickerStyle">@style/ThemeTimePicker</item>
     </style>
 </resources>
