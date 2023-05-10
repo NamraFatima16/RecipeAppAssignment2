@@ -40,6 +40,30 @@ class RecipePresenter(private val view: RecipeView)
     }
 
     fun doCancel() {
+        view.setResult(Activity.RESULT_CANCELED)
+        view.finish()
+    }
+
+    fun doDelete() {
+        view.setResult(99)
+        app.recipes.delete(recipe)
+        view.finish()
+    }
+
+    fun doSave(title: String, description: String, instructions: String, servings: Int) {
+        recipe.title = title
+        recipe.description = description
+        recipe.servings = servings
+        recipe.instructions = instructions
+
+        if(edit) {
+            app.recipes.update(recipe)
+        }
+        else {
+            app.recipes.create(recipe)
+        }
+
+        view.setResult(Activity.RESULT_OK)
         view.finish()
     }
 
@@ -72,6 +96,8 @@ class RecipePresenter(private val view: RecipeView)
         i("Set time: $hourOfDay $minute")
         val hrsString = if (hourOfDay == 0) "%9s".format("") else "%2d Hours ".format(hourOfDay)
         val minString = if (minute == 0) "" else "%02d mins".format(minute)
-        view.updateTime("$hrsString$minString")
+        val timeRequired = "$hrsString$minString"
+        view.updateTime(timeRequired)
+        recipe.timeRequired = timeRequired
     }
 }

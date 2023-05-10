@@ -4,4 +4,5 @@ import ie.setu.recipeapp.models.RecipeModel
 
 interface RecipeListener {
     fun onRecipeClick(recipe: RecipeModel, position: Int)
+    fun onRecipeLongClick(recipe: RecipeModel, position: Int)
 }

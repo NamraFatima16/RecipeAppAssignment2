@@ -2,6 +2,9 @@ package ie.setu.recipeapp.views.recipeList
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.recipeapp.R
 import ie.setu.recipeapp.adapters.RecipeViewAdapter
@@ -14,7 +17,7 @@ class RecipeListView : AppCompatActivity(), RecipeListener {
 
     private lateinit var binding: ActivityRecipeListBinding
     private lateinit var presenter: RecipeListPresenter
-    private var position: Int = 0
+    private lateinit var deleteItem: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +43,23 @@ class RecipeListView : AppCompatActivity(), RecipeListener {
     }
     override fun onRecipeClick(recipe: RecipeModel, position: Int) {
         i("Clicked on recipe ${recipe.id} at position $position")
+        presenter.doViewRecipe(recipe, position)
+    }
+
+    override fun onRecipeLongClick(recipe: RecipeModel, position: Int) {
+        i("Clicked on recipe ${recipe.id} at position $position")
+        if(!deleteItem.isVisible) deleteItem.isVisible = true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_recipe_list, menu)
+        deleteItem = menu?.findItem(R.id.items_delete)!!
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        i("Menu item selected: ${item.title}")
+        return super.onOptionsItemSelected(item)
     }
 
     fun onRefresh() {

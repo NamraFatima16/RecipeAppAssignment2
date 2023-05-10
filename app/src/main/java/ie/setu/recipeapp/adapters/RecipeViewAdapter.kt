@@ -38,6 +38,12 @@ class RecipeViewAdapter(private var recipes: List<RecipeModel>,
                     binding.root.setOnClickListener {
                         listener.onRecipeClick(recipe, adapterPosition)
                     }
+
+                    binding.root.setOnLongClickListener {
+                        listener.onRecipeLongClick(recipe, adapterPosition)
+                        binding.root.isChecked = !binding.root.isChecked
+                        true
+                    }
                 }
             }
 
