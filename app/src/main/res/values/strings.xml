@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">RecipeApp</string>
-    <string name="required_time">\u23F3 Time: %s </string>
-    <string name="servings">\uD83C\uDF5C Serves: %d </string>
+    <string name="required_time_fmt">\u23F3 Time: %s </string>
+    <string name="servings_fmt">\uD83C\uDF5C Serves: %d </string>
+    <string name="required_time">\u23F3 Time: </string>
+    <string name="servings">\uD83C\uDF5C Serves: </string>
     <string name="fab_content_desc">Add a recipe</string>
 </resources>

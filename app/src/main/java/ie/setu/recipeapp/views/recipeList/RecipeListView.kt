@@ -22,9 +22,11 @@ class RecipeListView : AppCompatActivity(), RecipeListener {
         i("Recipe List activity started...")
         presenter = RecipeListPresenter(this)
 
-        // Make this layout the active view on screen
+        // Make this layout the active view on screen and add toolbar
         binding = ActivityRecipeListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.toolbar.title = title
+        setSupportActionBar(binding.toolbar)
 
         // Set layout manager for recylerView and load the recipes
         binding.recyclerView.layoutManager = LinearLayoutManager(this)

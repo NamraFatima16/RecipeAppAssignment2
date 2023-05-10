@@ -26,8 +26,8 @@ class RecipeViewAdapter(private var recipes: List<RecipeModel>,
                     val res = binding.root.resources
                     binding.textViewTitle.text = recipe.title
                     binding.textViewDescription.text = recipe.description
-                    binding.time.text = res.getString(R.string.required_time, recipe.timeRequired)
-                    binding.servings.text = res.getString(R.string.servings, recipe.servings)
+                    binding.time.text = res.getString(R.string.required_time_fmt, recipe.timeRequired)
+                    binding.servings.text = res.getString(R.string.servings_fmt, recipe.servings)
                     Picasso.get()
                         .load(recipe.image)
                         .placeholder(R.drawable.baseline_broken_image_24)
