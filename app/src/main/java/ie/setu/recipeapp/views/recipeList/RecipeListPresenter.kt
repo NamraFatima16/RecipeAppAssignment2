@@ -20,7 +20,7 @@ class RecipeListPresenter(private val view: RecipeListView) {
         this.registerRefreshCallback()
     }
 
-    fun getRecipes() = app.recipes
+    fun getRecipes() = app.recipes.read()
 
     fun doAddRecipe() {
         val launcherIntent = Intent(view, RecipeView::class.java)

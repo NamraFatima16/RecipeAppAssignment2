@@ -6,7 +6,7 @@ import java.util.UUID
 
 class RecipeMemStore : RecipeStore {
 
-    val recipes = ArrayList<RecipeModel>()
+    private val recipes = ArrayList<RecipeModel>()
 
     override fun create(recipe: RecipeModel) {
         i("Adding recipe: $recipe")
