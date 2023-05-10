@@ -21,7 +21,7 @@ class RecipeMemStore : RecipeStore {
         var foundRecipe = findById(recipe.id)
         i("Updating recipe: $foundRecipe")
         foundRecipe?.let {
-            foundRecipe = recipe.copy()
+            recipes.set(recipes.indexOf(it), recipe)
         }
         i("Updated recipe: $foundRecipe")
     }

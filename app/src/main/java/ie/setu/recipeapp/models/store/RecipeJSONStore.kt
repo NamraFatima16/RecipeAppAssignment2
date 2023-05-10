@@ -39,9 +39,10 @@ class RecipeJSONStore(private val context: Context) : RecipeStore {
         var foundRecipe = findById(recipe.id)
         i("Updating recipe: $foundRecipe")
         foundRecipe?.let {
-            foundRecipe = recipe.copy()
+            recipes.set(recipes.indexOf(it), recipe)
         }
         i("Updated recipe: $foundRecipe")
+
         serialize()
     }
 
