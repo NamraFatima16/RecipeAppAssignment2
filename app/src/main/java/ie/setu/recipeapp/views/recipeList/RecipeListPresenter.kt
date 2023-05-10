@@ -8,7 +8,7 @@ import ie.setu.recipeapp.main.MainApp
 import ie.setu.recipeapp.views.recipe.RecipeView
 
 
-class RecipeListPresenter(val view: RecipeListView) {
+class RecipeListPresenter(private val view: RecipeListView) {
 
     private var app: MainApp = view.application as MainApp
     private var position: Int = 0
